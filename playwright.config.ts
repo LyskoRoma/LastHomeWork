@@ -1,4 +1,3 @@
-import { devices } from '@playwright/test';
 import type { PlaywrightTestConfig } from '@playwright/test';
 
 const playwrightConfig: PlaywrightTestConfig = {
@@ -11,7 +10,8 @@ const playwrightConfig: PlaywrightTestConfig = {
         timeout: 10000,
     },
     use: {
-        baseURL: ''
+        baseURL: 'https://learn.javascript.ru/',
+        browserName: 'chromium',
     },
 };
 
