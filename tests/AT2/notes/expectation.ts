@@ -1,6 +1,6 @@
 import { createExpectationString as e } from '@Utils/test/createExpectationString';
 
-export const expectations = {
+export const expectation = {
     s1: {
         e1: `${e(1)} Отображается модальное окно авторизации"`,
     },

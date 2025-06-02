@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { PageMain } from "@Pages/pageMain";
-import { expectations as exp } from './notes/expectations';
+import { expectation as exp } from './notes/expectation';
 
 test('Проверка авторизации пользователя', async ({ page }) => {
     await test.step('Перейти на главную страницу JS-learn', async () => {
