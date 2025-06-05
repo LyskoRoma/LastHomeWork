@@ -63,4 +63,31 @@ test('Проверка авторизации пользователя', async (
         expect(await profile.isVisibleAboutMe(), exp.s4.e7).toBe(true);
         expect(await profile.isVisibleBornDate(), exp.s4.e8).toBe(true);
     });
+
+    await test.step('Степ 5: Проверить элементы блока страны', async () => {
+        const pageProfile = new PageProfile(page);
+        const country = pageProfile.Profile.Country
+
+        expect(await country.isVisibleTitle(), exp.s5.e1).toBe(true);
+        expect(await country.isVisibleButtonAddCountry(), exp.s5.e2).toBe(true);
+    });
+
+    await test.step('Степ 6: Проверить элементы блока страны', async () => {
+        const pageProfile = new PageProfile(page);
+        const country = pageProfile.Profile.Country;
+        const fillCountry = 'Россия';
+
+        await country.clickButtonAddCountry();
+        await page.waitForTimeout(10000);
+        await country.fillInput(fillCountry);
+        await country.clickSuggest();
+        await country.clickSubmit();
+
+        const isVisible = await country.isVisibleAddedCountry();
+        const addedCountryText = await country.getTitleAddedCountry();
+
+        expect(isVisible && addedCountryText === fillCountry, exp.s6.e1).toBe(true);
+
+    });
+
 });
