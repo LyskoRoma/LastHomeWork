@@ -1,69 +1,72 @@
 import {Component} from '@Core/component';
+import {Country} from "@Components/pages/pageProfile/profile/country";
 
 export class Profile extends Component {
     private LOCATORS = {
         _self: this.locator,
-        title: this.locator.locator("//h2[contains(@class, 'profile-aboutme__title') and contains(text(), 'Публичный профиль')]"),
-        description: this.locator.locator("//div[contains(@class, 'profile-aboutme__greyed-text')]"),
-        country: this.locator.locator("//form[contains(@data-field, 'country')]"),
-        city: this.locator.locator("//form[contains(@data-field, 'town')]"),
-        email: this.locator.locator("//form[contains(@data-field, 'publicEmail')]"),
-        intereses: this.locator.locator("//form[contains(@data-field, 'interests')]"),
-        aboutMe: this.locator.locator("//form[contains(@data-field, 'aboutMe')]"),
-        bornDate: this.locator.locator("//form[contains(@data-field, 'birthday')]"),
+        wrapperTitle: this.locator.locator("//h2[contains(@class, 'profile-aboutme__title') and contains(text(), 'Публичный профиль')]"),
+        wrapperDescription: this.locator.locator("//div[contains(@class, 'profile-aboutme__greyed-text')]"),
+        wrapperCountry: this.locator.locator("//form[contains(@data-field, 'country')]"),
+        wrapperCity: this.locator.locator("//form[contains(@data-field, 'town')]"),
+        wrapperEmail: this.locator.locator("//form[contains(@data-field, 'publicEmail')]"),
+        wrapperIntereses: this.locator.locator("//form[contains(@data-field, 'interests')]"),
+        wrapperAboutMe: this.locator.locator("//form[contains(@data-field, 'aboutMe')]"),
+        wrapperBornDate: this.locator.locator("//form[contains(@data-field, 'birthday')]"),
     };
 
-    public async getTitle(): Promise<string> {
-        await this.LOCATORS.title.waitFor();
+    public Country = new Country(this.LOCATORS.wrapperCountry, this.page);
 
-        return await this.LOCATORS.title.innerText();
+    public async getTitle(): Promise<string> {
+        await this.LOCATORS.wrapperTitle.waitFor();
+
+        return await this.LOCATORS.wrapperTitle.innerText();
     };
 
     public async isVisibleTitle(): Promise<boolean> {
-        await this.LOCATORS.title.waitFor();
+        await this.LOCATORS.wrapperTitle.waitFor();
 
-        return await this.LOCATORS.title.isVisible();
+        return await this.LOCATORS.wrapperTitle.isVisible();
     };
 
     public async isVisibleDescription(): Promise<boolean> {
-        await this.LOCATORS.description.waitFor();
+        await this.LOCATORS.wrapperDescription.waitFor();
 
-        return await this.LOCATORS.description.isVisible();
+        return await this.LOCATORS.wrapperDescription.isVisible();
     };
 
     public async isVisibleCountry(): Promise<boolean> {
-        await this.LOCATORS.country.waitFor();
+        await this.LOCATORS.wrapperCountry.waitFor();
 
-        return await this.LOCATORS.country.isVisible();
+        return await this.LOCATORS.wrapperCountry.isVisible();
     };
 
     public async isVisibleCity(): Promise<boolean> {
-        await this.LOCATORS.city.waitFor();
+        await this.LOCATORS.wrapperCity.waitFor();
 
-        return await this.LOCATORS.city.isVisible();
+        return await this.LOCATORS.wrapperCity.isVisible();
     };
 
     public async isVisibleEmail(): Promise<boolean> {
-        await this.LOCATORS.email.waitFor();
+        await this.LOCATORS.wrapperEmail.waitFor();
 
-        return await this.LOCATORS.email.isVisible();
+        return await this.LOCATORS.wrapperEmail.isVisible();
     };
 
     public async isVisibleIntereses(): Promise<boolean> {
-        await this.LOCATORS.intereses.waitFor();
+        await this.LOCATORS.wrapperIntereses.waitFor();
 
-        return await this.LOCATORS.intereses.isVisible();
+        return await this.LOCATORS.wrapperIntereses.isVisible();
     };
 
     public async isVisibleAboutMe(): Promise<boolean> {
-        await this.LOCATORS.aboutMe.waitFor();
+        await this.LOCATORS.wrapperAboutMe.waitFor();
 
-        return await this.LOCATORS.aboutMe.isVisible();
+        return await this.LOCATORS.wrapperAboutMe.isVisible();
     };
 
     public async isVisibleBornDate(): Promise<boolean> {
-        await this.LOCATORS.bornDate.waitFor();
+        await this.LOCATORS.wrapperBornDate.waitFor();
 
-        return await this.LOCATORS.bornDate.isVisible();
+        return await this.LOCATORS.wrapperBornDate.isVisible();
     };
 }
