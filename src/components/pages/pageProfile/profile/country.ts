@@ -61,4 +61,17 @@ export class Country extends Component {
         return await this.LOCATORS.addedCountry.innerText();
     }
 
+    public async clickAddedCountry(): Promise<void> {
+        await this.LOCATORS.addedCountry.waitFor();
+
+        await this.LOCATORS.addedCountry.click();
+    }
+
+    public async clearInput(): Promise<void> {
+        await this.LOCATORS.inputAfterAddClick.waitFor();
+        await this.LOCATORS.inputAfterAddClick.fill('');
+    };
+
+
+
 }

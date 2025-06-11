@@ -3,7 +3,7 @@ import {PageMain} from "@Pages/pageMain";
 import {expectation as exp} from "../AT3/notes/expectation";
 import {PageProfile} from "@Pages/pageProfile";
 
-test('Проверка авторизации пользователя', async ({page}) => {
+test('Проверка ЛК пользователя', async ({page}) => {
     await test.step('Перейти на главную страницу JS-learn', async () => {
         await page.goto('/');
 
@@ -72,7 +72,7 @@ test('Проверка авторизации пользователя', async (
         expect(await country.isVisibleButtonAddCountry(), exp.s5.e2).toBe(true);
     });
 
-    await test.step('Степ 6: Проверить элементы блока страны', async () => {
+    await test.step('Степ 6: Проверить добавление страны', async () => {
         const pageProfile = new PageProfile(page);
         const country = pageProfile.Profile.Country;
         const fillCountry = 'Россия';
@@ -88,6 +88,17 @@ test('Проверка авторизации пользователя', async (
 
         expect(isVisible && addedCountryText === fillCountry, exp.s6.e1).toBe(true);
 
+    });
+
+    await test.step("Степ 7: удалить страну, добавленную на 6 шаге", async () => {
+        const pageProfile = new PageProfile(page);
+        const country = pageProfile.Profile.Country;
+
+        await country.clickAddedCountry();
+        await country.clearInput();
+        await country.clickSubmit();
+
+        expect(await country.isVisibleButtonAddCountry(), exp.s7.e1).toBe(true);
     });
 
 });

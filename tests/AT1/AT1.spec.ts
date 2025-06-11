@@ -56,6 +56,7 @@ test('Проверка переключения языка', async ({ page }) =>
         const language = pageMain.Header.Language;
 
         await header.clickOnLanguage();
+        //await page.waitForTimeout(3000);
         await language.clickRussianLanguage();
 
         expect(await header.getLanguageOnHeader(), exp.s5.e1).toBe('RU');
